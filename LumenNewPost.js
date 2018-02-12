@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const fs = require('fs'),
   path = require('path')
 
@@ -17,7 +18,6 @@ const getDirectory = () =>
 
 // parse out custom blog options
 let title = ''
-let validTitle = false
 try {
   title = getParam('title').trim()
   if (title.length <= 0) throw 'title empty'
