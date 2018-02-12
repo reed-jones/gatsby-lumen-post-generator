@@ -2,7 +2,9 @@
 
 The [Lumen](https://github.com/alxshelepenok/gatsby-starter-lumen) post generator is a simple skeleton generator that will add a new post to your lumen blog and automate the directory structure creation and much of the frontmatter creation.
 
-simply run `yarn lumen-post` and pass it the desired options, chosen from the list below. Options are added using key="value" at the commandline. Only the title option is required. Available options are as follows:
+simply run `yarn lumen-post` and pass it the desired options. alternatively, if your an npm fan add `"lumen-post": "lumen-post",` to your package.json scripts.
+
+Options are added using key="value" at the commandline. Only the title option is required. Available options are as follows:
 
 * `title` (_required_)
 * `category` (or just `cat`)
