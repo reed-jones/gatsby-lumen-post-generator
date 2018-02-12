@@ -1,19 +1,31 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require('fs'),
+  path = require('path')
 
-const articlesDir = path.join(__dirname, `../src/pages/articles/`)
+const articlesDir = path.join(__dirname, `../../src/pages/articles/`)
 
+// parse commandline parameters, returning 'value' for every getParam(key)
 const getParam = arg =>
   (process.argv.find(param => param.split('=')[0] === arg) || '').split('=')[1]
 
+//long or short ISO timezones
 const niceNow = (short = true, now = new Date()) =>
   short ? now.toISOString().split('T')[0] : now.toISOString()
 
+// blog article directory
 const getDirectory = () =>
   articlesDir + niceNow() + '---' + title.replace(/ /g, '-')
 
 // parse out custom blog options
-const title = getParam('title').trim()
+let title = ''
+let validTitle = false
+try {
+  title = getParam('title').trim()
+  if (title.length <= 0) throw 'title empty'
+} catch (err) {
+  console.log(`There doesn't seem to be a valid title argument passed.`)
+  return
+}
+
 const category = getParam('cat') || getParam('category') || ''
 const description = getParam('desc') || getParam('description') || ''
 const tags = getParam('tags')
