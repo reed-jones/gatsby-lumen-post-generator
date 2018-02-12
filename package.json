@@ -1,17 +1,17 @@
 {
   "name": "gatsby-lumen-post-generator",
   "version": "1.0.0",
-  "description": "Easily create new skeleton posts for use with the Gatsby Lumen blog template.",
-  "main": "NewPost.js",
+  "description":
+    "Easily create new skeleton posts for use with the Gatsby Lumen blog template.",
+  "author": "Reed Jones <reedjones@reedjones.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reed-jones/gatsby-lumen-post-generator.git"
+  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "gatsby",
-    "lumen",
-    "blog",
-    "markdown"
-  ],
-  "author": "reed-jones <reedjones@reedjones.com>",
-  "license": "MIT"
+  "keywords": ["gatsby", "lumen", "blog", "markdown"]
 }
