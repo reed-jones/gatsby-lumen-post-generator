@@ -14,8 +14,10 @@ const niceNow = (short = true, now = new Date()) =>
 
 // blog article directory
 const getDirectory = () =>
-  articlesDir + niceNow() + '---' + title.replace(/ /g, '-')
-
+  articlesDir +
+  niceNow() +
+  '---' +
+  title.replace(/ /g, '-').replace(/[\/\\]/g, '-')
 // parse out custom blog options
 let title = ''
 try {
@@ -38,6 +40,7 @@ const tags = getParam('tags')
 const makeBlogDir = () => {
   const dir = getDirectory()
   const promise = new Promise((resolve, reject) => {
+    console.log(dir)
     try {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir)
@@ -61,17 +64,23 @@ const readBlogTemplate = blog => {
       (err, data) => {
         if (err) reject(err)
         const template = data
-          .replace(/Blog-Title/g, title)
+          .replace(/Blog-Title/g, title.replace(/\\/g, '\\\\'))
           .replace(/Blog-Category/g, category)
           .replace(/Blog-Description/g, description)
           .replace(/Blog-Tags/g, tags)
-          .replace(/Blog-Path/g, title.toLowerCase().replace(/ /g, '-'))
+          .replace(
+            /Blog-Path/g,
+            title
+              .toLowerCase()
+              .replace(/ /g, '-')
+              .replace(/[\/\\]/g, '-'),
+          )
           .replace(/Blog-Date/g, niceNow(false))
         resolve({
           message: 'Template Generated\n' + template,
           data: template,
         })
-      }
+      },
     )
   })
   return promise
