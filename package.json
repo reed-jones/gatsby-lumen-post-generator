@@ -1,6 +1,6 @@
 {
   "name": "gatsby-lumen-post-generator",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Easily create new skeleton posts for use with the Gatsby Lumen blog template.",
   "author": "Reed Jones <reedjones@reedjones.com>",
   "license": "MIT",
